@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validação de E-mail</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        background-color: #f3f3f3;
+      }
+
+      form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+
+      input, button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      #mensagem {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Validação de E-mail</h2>
+    <form id="formEmail">
+      <label for="email">Digite seu e-mail:</label>
+      <input type="text" id="email" placeholder="exemplo@dominio.com" />
+      <button type="submit">Validar</button>
+      <p id="mensagem"></p>
+    </form>
+
+    <script>
+      const form = document.getElementById('formEmail');
+      const emailInput = document.getElementById('email');
+      const mensagem = document.getElementById('mensagem');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const email = emailInput.value;
+        const padraoEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        if (email.match(padraoEmail)) {
+          mensagem.style.color = "green";
+          mensagem.textContent = "E-mail válido!";
+        } else {
+          mensagem.style.color = "red";
+          mensagem.textContent = "E-mail inválido. O formato correto é: exemplo@dominio.com";
+        }
+      });
+    </script>
+  </body>
+</html>
